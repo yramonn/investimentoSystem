@@ -12,11 +12,9 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/v1/users", consumes = {"application/json", "text/plain;charset=UTF-8"})
-
+@RequestMapping("/v1/users")
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
     public UserController(UserService userService) {
@@ -51,9 +49,8 @@ public class UserController {
     @PutMapping("/{userId}")
     public ResponseEntity<Void> updateUserById(@PathVariable("userId") String userId,
                                                @RequestBody UpdateUserDto updateUserDto) {
-        userService.updateUserById(userId,updateUserDto);
+        userService.updateUserById(userId, updateUserDto);
         return ResponseEntity.noContent().build();
-
     }
 
     @DeleteMapping("/{userId}")
@@ -61,5 +58,4 @@ public class UserController {
         userService.deleteById(userId);
         return ResponseEntity.noContent().build();
     }
-
 }

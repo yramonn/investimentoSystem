@@ -26,7 +26,7 @@ public class UserService {
 
         var entityConvert = new User(UUID.randomUUID(),
                 createUserDto.username(),
-                createUserDto.username(),
+                createUserDto.email(),
                 createUserDto.password(),
                 Instant.now(),
                 null);
