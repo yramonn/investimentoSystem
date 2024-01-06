@@ -2,7 +2,7 @@
 
 # Sobre o projeto
 
-Working in progress...
+Criando Users, Contas e Consumindo os preços da bolsa de valores (Brapi.dev)
 
 # Diagrama de Classes
 
