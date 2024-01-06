@@ -4,6 +4,11 @@
 
 Working in progress...
 
+# Diagrama de Classes
+
+![image](https://github.com/yramonn/investimentoSystem/assets/86327797/342a6311-8328-49ab-ba8a-316f09fc47d7)
+
+
 # Tecnologias utilizadas
 
 - Docker
