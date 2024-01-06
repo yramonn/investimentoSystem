@@ -1,5 +1,7 @@
 package com.ramon.investmentAggregator.controller;
 
+import com.ramon.investmentAggregator.dtos.AccountResponseDto;
+import com.ramon.investmentAggregator.dtos.CreateAccountDto;
 import com.ramon.investmentAggregator.dtos.CreateUserDto;
 import com.ramon.investmentAggregator.dtos.UpdateUserDto;
 import com.ramon.investmentAggregator.entity.User;
@@ -24,7 +26,6 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody CreateUserDto createUserDto) {
         var userId = userService.createUser(createUserDto);
-
         return ResponseEntity.created(URI.create("/v1/users/" + userId.toString())).build();
     }
 
@@ -42,7 +43,6 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> listUsers() {
         var users = userService.getAllUsers();
-
         return ResponseEntity.ok(users);
     }
 
@@ -57,5 +57,21 @@ public class UserController {
     public ResponseEntity<Void> deleteById(@PathVariable("userId") String userId) {
         userService.deleteById(userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity<Void> createAccount(@PathVariable("userId") String userId,
+                                              @RequestBody CreateAccountDto createAccountDto) {
+        userService.createAccount(userId, createAccountDto);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @GetMapping("/{userId}/accounts")
+    public ResponseEntity<List<AccountResponseDto>> listAccounts(@PathVariable("userId") String userId) {
+
+        var accounts = userService.listAccounts(userId);
+
+        return ResponseEntity.ok(accounts);
     }
 }
